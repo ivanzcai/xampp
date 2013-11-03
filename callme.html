@@ -1,0 +1,62 @@
+
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+/*
+new Ajax.Request('callme.php', {
+  method:'get',
+  onSuccess: function(transport) {
+    var response = transport.responseText || "no response text";
+    alert("Success! \n\n" + response);
+  },
+  onFailure: function() { alert('Something went wrong...'); }
+});
+*/
+
+
+$(document).ready( function(){
+
+	
+	$('#submit_btn').click(function() {
+		var serializedData = $('#info').serialize();
+		alert(serializedData);
+		
+		$.ajax({
+			url:'callme.php',
+			type:'POST',
+			data:  serializedData,
+		
+		}).done( function(response){
+			$('#greetings').html(response);
+		});
+	});
+	
+	$('#submit_btn').click(function() {
+		var serializedData = $('#info').serialize();
+		alert(serializedData);
+		
+		$.ajax({
+			url:'callme.php',
+			type:'POST',
+			data:  serializedData,
+		
+		}).done( function(response){
+			$('#greetings').html(response);
+		});
+	});
+		
+});
+</script>
+
+
+
+<body>
+
+	<form  id='info'>
+		<table>
+			<tr><td><label>Name:</label></td><td><input type="text" name='name' size="30" /></td></tr>
+			<tr><td><label>Suburb:</label></td><td><input type="text" name='suburb' size="30" /></td></tr>
+			<tr><td><label></label></td><td><input type="button" id='submit_btn' value="Submit" size="30" /></td></tr>
+		</table>
+	</form>
+	<div id='greetings'>Greatings here</div>
+</body>

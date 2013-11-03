@@ -1,0 +1,71 @@
+<script type="text/javascript" src="jquery.js"></script>
+
+<script type="text/javascript">
+	
+	function person(){
+		this.age='25';
+		this.gender='male';
+		this.job='unemployed';
+		
+	};
+	
+	person.prototype.address='73 Regent St redfern';
+	person.prototype.talk=function(dialog){
+		alert(dialog);
+	}
+	
+	var jack = new person();
+	console.log(jack.age);
+	console.log(jack.gender);
+	console.log(jack.job);
+	console.log(jack.address);
+	jack.talk('Hi I am Jack');
+	
+
+	(function ( $ ){
+		$.fn.roundborder = function( options ){
+			
+			//Set default variables
+			var settings = $.extend({
+				color: "#CCCCCC",
+				width: "3px",
+				style: "solid",
+				radius: "5px",
+				
+			}, options);
+			
+			return this.css({
+				'border-color': settings.color,
+				'border-width': settings.width,
+				'border-style' : settings.style,
+				'border-radius' : settings.radius,
+			});
+			
+		};
+	
+	}(jQuery))	
+
+$(document).ready(
+	function(){
+		$('#box').roundborder({'color': 'yellow', 'radius': '20px'});
+	}
+)
+
+</script>
+
+<style>
+	#box{
+		width: 500px;
+		height: 400px;
+	}
+	
+</style>
+<body>
+	
+	<h1>Testing</h1>
+	
+	<div id='box'>
+		<p>fdafdakl fds d afjklfgjkltr  gfadlga sa fga fdlaf dajslkfda fdsakl fdkalf dkalf dasklf sdaklf akl fds</p>
+	</div>
+	
+</body>
